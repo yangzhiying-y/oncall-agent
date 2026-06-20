@@ -1,7 +1,5 @@
 # 知识库智能运维Agent 系统
 
-> 新手先看：[第一轮优化学习指南](docs/第一轮优化学习指南.md)。它会用零基础语言解释页面、后端、配置和本次改动。
-
 > 企业级智能对话和运维助手，支持 RAG 知识库问答和 AIOps 智能诊断
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
