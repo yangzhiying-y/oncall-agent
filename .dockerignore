@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+.codebuddy/
+
+# Git
+.git/
+.gitignore
+
+# Environment (contains secrets)
+.env
+.env.*
+
+# Logs and data
+logs/
+data/
+uploads/
+volumes/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Tests and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Type checking
+.mypy_cache/
+.ruff_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docs (not needed at runtime)
+docs/
+*.md
+!aiops-docs/

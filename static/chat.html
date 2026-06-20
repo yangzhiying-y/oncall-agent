@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="知识库智能运维Agent 系统">
+    <title>知识库智能运维Agent 系统</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="/static/chatgpt.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/es/highlight.min.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" aria-label="主导航">
+            <div class="sidebar-top">
+                <a class="brand" href="/" aria-label="知识库智能运维Agent 系统 首页">
+                    <span class="brand-logo" aria-hidden="true">✦</span>
+                    <span>知识库智能运维Agent 系统</span>
+                </a>
+                <button class="new-chat-btn" id="newChatBtn" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <span>新建对话</span>
+                    <kbd>Ctrl K</kbd>
+                </button>
+            </div>
+
+            <nav class="sidebar-actions" aria-label="功能">
+                <button class="sidebar-action" id="knowledgeUploadBtn" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>导入知识文档</span>
+                </button>
+                <button class="sidebar-action" id="aiOpsSidebarBtn" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 4 7.5l8 4.5 8-4.5L12 3ZM4 12l8 4.5 8-4.5M4 16.5l8 4.5 8-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>AIOps 故障诊断</span>
+                </button>
+            </nav>
+
+            <section class="chat-history-section" aria-label="聊天记录">
+                <div class="history-header"><span>最近对话</span><span id="historyCount"></span></div>
+                <div class="chat-history-list" id="chatHistoryList"></div>
+            </section>
+
+            <div class="sidebar-footer">
+                <span class="service-status" id="serviceStatus" role="status" aria-live="polite"><span class="status-dot" aria-hidden="true"></span>正在检查服务</span>
+                <a href="/docs" target="_blank" rel="noreferrer">API 文档 <span aria-hidden="true">↗</span></a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="topbar"><span class="topbar-title">知识库智能运维Agent 系统</span></div>
+            <div class="chat-container centered">
+                <section class="welcome-greeting" id="welcomeGreeting" aria-labelledby="welcomeTitle">
+                    <h1 id="welcomeTitle">今天想解决什么问题？</h1>
+                    <p>我可以检索知识库，协助排查告警，或帮你梳理运维步骤。</p>
+                    <div class="quick-prompts" id="quickPrompts">
+                        <button type="button" data-prompt="如何排查服务响应缓慢？"><span>↗</span>如何排查服务响应缓慢？</button>
+                        <button type="button" data-prompt="帮我总结知识库里关于 CPU 告警的处理建议"><span>↗</span>总结 CPU 告警处理建议</button>
+                        <button type="button" data-prompt="请给我一份排查服务不可用的步骤清单"><span>↗</span>服务不可用排查清单</button>
+                        <button type="button" id="welcomeAIOpsBtn"><span>✦</span>开始一次 AIOps 诊断</button>
+                    </div>
+                </section>
+
+                <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+
+                <div class="chat-input-container">
+                    <div class="input-group-wrapper">
+                        <div class="input-wrapper">
+                            <label class="sr-only" for="messageInput">给知识库智能运维Agent 系统发消息</label>
+                            <input type="text" id="messageInput" placeholder="给知识库智能运维Agent 系统发消息" maxlength="1000" autocomplete="off">
+                            <div class="input-bottom-bar">
+                                <div class="right-actions">
+                                    <div class="mode-selector-wrapper">
+                                        <button class="mode-selector-btn" id="modeSelectorBtn" type="button" aria-haspopup="listbox" aria-expanded="false"><span id="currentModeText">快速回答</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                                        <div class="mode-dropdown" id="modeDropdown" role="listbox">
+                                            <div class="dropdown-header">选择回答方式</div>
+                                            <button class="dropdown-item active" type="button" data-mode="quick" role="option" aria-selected="true"><strong>快速回答</strong><small>一次性生成完整回复</small></button>
+                                            <button class="dropdown-item" type="button" data-mode="stream" role="option" aria-selected="false"><strong>流式回答</strong><small>边生成边显示内容</small></button>
+                                        </div>
+                                    </div>
+                                    <button class="send-btn-circle" id="sendButton" type="button" title="发送" aria-label="发送"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 14-7-4 14-3-5-5-2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="input-hint">系统可能会出错，请核实重要信息。</p>
+                    <input type="file" id="fileInput" accept=".txt,.md,.markdown,.pdf,.docx,.doc" hidden>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay" role="alert" aria-live="assertive"><div class="loading-content"><div class="loading-spinner"></div><strong class="loading-text">正在处理</strong><span class="loading-subtext">请稍候</span></div></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
