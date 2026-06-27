@@ -1,54 +1,92 @@
-# 知识库智能运维Agent 系统
+<p align="center">
+  <!-- Logo placeholder: replace with your project logo -->
+  <h1 align="center">🧠 知识库智能运维 Agent 系统</h1>
+  <p align="center">
+    <em>企业级智能对话和运维助手，支持 RAG 知识库问答和 AIOps 智能诊断</em><br>
+    <em>Enterprise-grade intelligent assistant — RAG knowledge-base Q&A & AIOps diagnostics</em>
+  </p>
+  <p align="center">
+    <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python&logoColor=white" alt="Python"></a>
+    <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/FastAPI-0.109+-009688.svg?logo=fastapi&logoColor=white" alt="FastAPI"></a>
+    <a href="https://www.langchain.com/"><img src="https://img.shields.io/badge/LangChain-latest-ff6f00.svg?logo=langchain&logoColor=white" alt="LangChain"></a>
+    <a href="https://milvus.io/"><img src="https://img.shields.io/badge/Milvus-vector--db-00A1EA.svg?logo=milvus&logoColor=white" alt="Milvus"></a>
+    <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-✓-2496ED.svg?logo=docker&logoColor=white" alt="Docker"></a>
+    <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License"></a>
+  </p>
+</p>
 
-> 企业级智能对话和运维助手，支持 RAG 知识库问答和 AIOps 智能诊断
+---
 
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green.svg)](https://fastapi.tiangolo.com/)
-[![LangChain](https://img.shields.io/badge/LangChain-latest-orange.svg)](https://www.langchain.com/)
+<details open>
+<summary><strong>📑 目录 / Table of Contents</strong></summary>
 
-## ✨ 核心特性
+- [✨ 核心特性 / Core Features](#-核心特性--core-features)
+- [🛠️ 技术栈 / Tech Stack](#️-技术栈--tech-stack)
+- [🚀 快速开始 / Quick Start](#-快速开始--quick-start)
+- [📡 API 接口 / API Reference](#-api-接口--api-reference)
+- [📁 项目结构 / Project Structure](#-项目结构--project-structure)
+- [⚙️ 配置说明 / Configuration](#️-配置说明--configuration)
+- [🎯 AIOps 智能运维 / AIOps Intelligent Operations](#-aiops-智能运维--aiops-intelligent-operations)
+- [📝 开发指南 / Development Guide](#-开发指南--development-guide)
+- [🐛 常见问题 / FAQ](#-常见问题--faq)
+- [📚 参考资源 / References](#-参考资源--references)
+- [📄 许可证 / License](#-许可证--license)
 
-- 🤖 **智能对话** - LangChain 多轮对话 + 流式输出
-- 📚 **RAG 问答** - 向量检索增强，支持文档上传、自动建立向量索引、自动更新知识库
-- 🔧 **AIOps 诊断** - Plan-Execute-Replan 自动故障诊断和根因分析
-- 🌐 **Web 界面** - 现代化 UI，支持多种对话模式：快速问答/流式对话
-- 🔌 **MCP 集成** - 日志查询和监控数据工具接入
+</details>
 
-## 🛠️ 技术栈
+---
 
-- **框架**: FastAPI + LangChain + LangGraph
-- **LLM**: 阿里云 DashScope (通义千问)
-- **向量库**: Milvus
-- **工具协议**: MCP (Model Context Protocol)
+## ✨ 核心特性 / Core Features
 
-## 🚀 快速开始
+| 特性 | 说明 |
+|------|------|
+| 🤖 **智能对话** / Intelligent Chat | LangChain 多轮对话 + 流式输出 / Multi-turn conversation with streaming |
+| 📚 **RAG 问答** / RAG Q&A | 向量检索增强，支持文档上传、自动建立向量索引、自动更新知识库 / Vector retrieval with auto-indexing |
+| 🔧 **AIOps 诊断** / AIOps Diagnostics | Plan-Execute-Replan 自动故障诊断和根因分析 / Automated root-cause analysis |
+| 🌐 **Web 界面** / Web UI | 现代化 UI，支持快速问答与流式对话两种模式 / Modern UI with two chat modes |
+| 🔌 **MCP 集成** / MCP Integration | 日志查询和监控数据工具接入 / Log query & monitoring data tools |
 
-### 环境要求
+---
+
+## 🛠️ 技术栈 / Tech Stack
+
+| 层级 | 技术 |
+|------|------|
+| **框架** / Framework | FastAPI + LangChain + LangGraph |
+| **LLM** | 阿里云 DashScope (通义千问) / Alibaba DashScope (Qwen) |
+| **向量库** / Vector DB | Milvus |
+| **工具协议** / Tool Protocol | MCP (Model Context Protocol) |
+
+---
+
+## 🚀 快速开始 / Quick Start
+
+### 环境要求 / Prerequisites
+
 - Python 3.10+
-- 阿里云 DashScope API Key ([获取地址](https://dashscope.aliyun.com/))
+- 阿里云 DashScope API Key（[获取地址](https://dashscope.aliyun.com/)）/ [Get API Key](https://dashscope.aliyun.com/)
 
-### 安装和启动
-
-#### Linux/macOS 环境
+<details>
+<summary><strong>🐧 Linux / macOS</strong></summary>
 
 ```bash
-# 1. 克隆项目
+# 1. 克隆项目 / Clone
 git clone <repository_url>
 cd super_biz_agent_py
 
-# 2. 安装依赖（推荐使用 uv）
-# 方式 1: 使用 uv（推荐，更快）
+# 2. 安装依赖（推荐使用 uv）/ Install dependencies (uv recommended)
+# 方式 1: 使用 uv / via uv
 pip install uv
 uv venv
 source .venv/bin/activate
 uv pip install -e .
 
-# 方式 2: 使用 pip
+# 方式 2: 使用 pip / via pip
 pip install -e .
 
-# 3. 编辑配置文件
+# 3. 编辑配置文件 / Configure
 # 首次使用需要编辑 .env 文件，填入你的 DASHSCOPE_API_KEY
-vim .env  # 或使用其他编辑器
+vim .env
 
 # 4. 一键初始化（启动 Docker + 服务 + 上传文档）
 make init
@@ -57,133 +95,132 @@ make init
 make start
 ```
 
-#### Windows 环境（PowerShell/CMD）
+</details>
 
-如果Windows 不支持 `make` 命令，可以手动执行以下步骤以启动服务：
+<details>
+<summary><strong>🪟 Windows</strong></summary>
+
+**手动启动 / Manual Start：**
 
 ```powershell
-# 1. 克隆项目
+# 1. 克隆项目 / Clone
 git clone <repository_url>
 cd super_biz_agent_py
 
-# 2. 创建虚拟环境并安装依赖
-# 方式 1: 使用 uv（推荐，更快）
+# 2. 创建虚拟环境并安装依赖 / Setup venv & install
+# 方式 1: 使用 uv / via uv
 pip install uv
-# 创建虚拟环境
 uv venv
-# 激活虚拟环境
 .venv\Scripts\activate
-# 安装所有依赖
 uv pip install -e .
 
-# 方式 2: 使用 pip
+# 方式 2: 使用 pip / via pip
 python -m venv .venv
 .venv\Scripts\activate
 pip install -e .
 
-# 3. 编辑配置文件
-# 使用记事本或其他编辑器打开 .env 文件，填入你的 DASHSCOPE_API_KEY
+# 3. 编辑配置文件 / Configure
 notepad .env
 
-# 4. 启动 Docker Desktop
-# 确保 Docker Desktop 已安装并正在运行
+# 4. 启动 Docker Desktop（确保已安装并运行）
 
-# 5. 启动 Milvus 向量数据库（Docker Compose）
+# 5. 启动 Milvus 向量数据库 / Start Milvus
 docker compose -f vector-database.yml up -d
 
-# 6. 等待 Milvus 启动完成（约 5-10 秒）
+# 6. 等待 Milvus 启动完成 / Wait for Milvus
 timeout /t 10
 
-# 7. 启动 MCP 服务
-# 启动 CLS 日志查询服务（新开一个 PowerShell 窗口）
-python mcp_servers/cls_server.py
+# 7. 启动 MCP 服务（各开一个新 PowerShell 窗口）
+python mcp_servers/cls_server.py      # CLS 日志查询
+python mcp_servers/monitor_server.py  # Monitor 监控
 
-# 启动 Monitor 监控服务（新开一个 PowerShell 窗口）
-python mcp_servers/monitor_server.py
-
-# 8. 启动 FastAPI 主服务（新开一个 PowerShell 窗口）
-# 注意：日志会自动输出到 logs\app_YYYY-MM-DD.log
+# 8. 启动 FastAPI 主服务（新开 PowerShell 窗口）
+# 日志自动输出到 logs\app_YYYY-MM-DD.log
 python -m uvicorn app.main:app --host 0.0.0.0 --port 9900
 
-# 9. 上传文档到向量库（新开一个 PowerShell 窗口）
-# 等待服务启动完成后执行
+# 9. 上传文档到向量库 / Upload docs
 timeout /t 5
 python -c "import requests, os, time; [requests.post('http://localhost:9900/api/upload', files={'file': open(f'aiops-docs/{f}', 'rb')}) or time.sleep(1) for f in os.listdir('aiops-docs') if f.endswith('.md')]"
 ```
 
-**Windows 一键启动脚本**（推荐）
-
-使用启动脚本：
+**一键启动脚本 / One-click Scripts：**
 
 ```powershell
-# 启动所有服务
-.\start-windows.bat
-
-# 停止所有服务
-.\stop-windows.bat
+.\start-windows.bat   # 启动所有服务 / Start all
+.\stop-windows.bat    # 停止所有服务 / Stop all
 ```
 
-### 访问服务
-- **Web 界面**: http://localhost:9900
-- **API 文档**: http://localhost:9900/docs
+</details>
 
-## 📡 API 接口
+### 访问服务 / Access
 
-### 核心接口
+| 服务 | 地址 |
+|------|------|
+| **Web 界面** / Web UI | http://localhost:9900 |
+| **API 文档** / API Docs | http://localhost:9900/docs |
 
-| 功能 | 方法 | 路径 | 说明 |
-|------|------|------|------|
-| 普通对话 | POST | `/api/chat` | 一次性返回 |
-| 流式对话 | POST | `/api/chat_stream` | SSE 流式输出 |
-| AIOps 诊断 | POST | `/api/aiops` | 自动故障诊断（流式） |
-| 文件上传 | POST | `/api/upload` | 上传并索引文档 |
-| 健康检查 | GET | `/api/health` | 服务状态检查 |
+---
 
-### 使用示例
+## 📡 API 接口 / API Reference
+
+| 功能 / Feature | 方法 | 路径 | 说明 / Description |
+|---------------|------|------|-------------------|
+| 普通对话 / Chat | `POST` | `/api/chat` | 一次性返回 / Single response |
+| 流式对话 / Stream Chat | `POST` | `/api/chat_stream` | SSE 流式输出 / Server-Sent Events |
+| AIOps 诊断 / Diagnostics | `POST` | `/api/aiops` | 自动故障诊断（流式）/ Streaming diagnostics |
+| 文件上传 / Upload | `POST` | `/api/upload` | 上传并索引文档 / Upload & index |
+| 健康检查 / Health | `GET` | `/api/health` | 服务状态检查 / Health check |
+
+### 使用示例 / Examples
 
 ```bash
-# 普通对话
+# 普通对话 / Chat
 curl -X POST "http://localhost:9900/api/chat" \
   -H "Content-Type: application/json" \
   -d '{"Id":"session-123","Question":"你好"}'
 
-# 流式对话
+# 流式对话 / Stream Chat
 curl -X POST "http://localhost:9900/api/chat_stream" \
   -H "Content-Type: application/json" \
   -d '{"Id":"session-123","Question":"你好"}' \
   --no-buffer
 
-# AIOps 诊断
+# AIOps 诊断 / AIOps Diagnostics
 curl -X POST "http://localhost:9900/api/aiops" \
   -H "Content-Type: application/json" \
   -d '{"session_id":"session-123"}' \
   --no-buffer
 ```
 
-## 📁 项目结构
+---
+
+## 📁 项目结构 / Project Structure
+
+<details>
+<summary><strong>📂 点击展开目录树 / Click to expand</strong></summary>
 
 ```
 super_biz_agent_py/
-├── app/                                    # 应用核心
+├── app/                                    # 应用核心 / Application Core
 │   ├── __init__.py                         # 包初始化（自动加载日志配置）
 │   ├── main.py                             # FastAPI 应用入口
 │   ├── config.py                           # 配置管理（环境变量、MCP 服务器配置）
-│   ├── api/                                # API 路由层
+│   ├── api/                                # API 路由层 / API Routes
 │   │   ├── __init__.py
 │   │   ├── chat.py                         # 对话接口（RAG 聊天）
 │   │   ├── aiops.py                        # AIOps 接口（故障诊断）
 │   │   ├── file.py                         # 文件管理（文档上传）
 │   │   └── health.py                       # 健康检查（服务状态）
-│   ├── services/                           # 业务服务层
+│   ├── services/                           # 业务服务层 / Business Services
 │   │   ├── __init__.py
 │   │   ├── rag_agent_service.py            # RAG Agent（LangGraph 状态图）
 │   │   ├── aiops_service.py                # AIOps 服务（计划-执行-重规划）
 │   │   ├── vector_store_manager.py         # 向量存储管理器
-│   │   ├── vector_embedding_service.py     # 向量embedding服务
+│   │   ├── vector_embedding_service.py     # 向量 Embedding 服务
 │   │   ├── vector_index_service.py         # 向量索引服务
 │   │   ├── vector_search_service.py        # 向量检索服务
 │   │   └── document_splitter_service.py    # 文档分割服务
-│   ├── agent/                              # Agent 模块
+│   ├── agent/                              # Agent 模块 / Agent Module
 │   │   ├── __init__.py
 │   │   ├── mcp_client.py                   # MCP 客户端（工具调用）
 │   │   └── aiops/                          # AIOps 核心逻辑
@@ -193,35 +230,35 @@ super_biz_agent_py/
 │   │       ├── replanner.py                # 重规划器
 │   │       ├── state.py                    # 状态定义
 │   │       └── utils.py                    # 工具函数
-│   ├── models/                             # 数据模型层
+│   ├── models/                             # 数据模型层 / Data Models
 │   │   ├── __init__.py
 │   │   ├── aiops.py                        # AIOps 模型
 │   │   ├── document.py                     # 文档模型
 │   │   ├── request.py                      # 请求模型
 │   │   └── response.py                     # 响应模型
-│   ├── tools/                              # Agent 工具集
+│   ├── tools/                              # Agent 工具集 / Tools
 │   │   ├── __init__.py
 │   │   ├── knowledge_tool.py               # 知识库查询工具
 │   │   └── time_tool.py                    # 时间工具
-│   ├── core/                               # 核心组件
+│   ├── core/                               # 核心组件 / Core Components
 │   │   ├── __init__.py
 │   │   ├── llm_factory.py                  # LLM 工厂（模型管理）
 │   │   └── milvus_client.py                # Milvus 客户端
-│   └── utils/                              # 工具类
+│   └── utils/                              # 工具类 / Utilities
 │       ├── __init__.py
 │       └── logger.py                       # 日志配置（Loguru）
-├── static/                                 # Web 前端（纯静态）
+├── static/                                 # Web 前端 / Web Frontend
 │   ├── index.html                          # 主页面
 │   ├── app.js                              # 前端逻辑
 │   └── styles.css                          # 样式表
-├── mcp_servers/                            # MCP 服务器
+├── mcp_servers/                            # MCP 服务器 / MCP Servers
 │   ├── cls_server.py                       # CLS 日志查询服务
 │   ├── monitor_server.py                   # 监控数据服务
 │   └── README.md                           # MCP 服务说明
-├── aiops-docs/                             # 运维知识库（Markdown 文档）
-├── logs/                                   # 日志目录（Loguru 自动创建）
+├── aiops-docs/                             # 运维知识库 / Ops Knowledge Base
+├── logs/                                   # 日志目录 / Logs (Loguru)
 │   └── app_YYYY-MM-DD.log                  # 按天轮转的日志文件
-├── uploads/                                # 上传文件临时目录
+├── uploads/                                # 上传文件临时目录 / Upload Temp
 ├── volumes/                                # Milvus 数据持久化目录
 ├── .env                                    # 环境变量配置（需手动创建）
 ├── Makefile                                # 项目管理命令（Linux/macOS）
@@ -234,101 +271,132 @@ super_biz_agent_py/
 └── README.md                               # 项目说明
 ```
 
-## ⚙️ 配置说明
+</details>
 
-通过 `.env` 文件配置：
+---
+
+## ⚙️ 配置说明 / Configuration
+
+通过 `.env` 文件配置 / Configure via `.env`:
 
 ```bash
-# 阿里云LLM DashScope 配置（必填）
-# 秘钥管理： https://bailian.console.aliyun.com/cn-beijing/?spm=5176.29597918.J_SEsSjsNv72yRuRFS2VknO.2.61ac133ccTVQLw&tab=demohouse#/api-key
-DASHSCOPE_API_KEY=your-api-key （配置你自己的秘钥）
-DASHSCOPE_API_BASE=https://dashscope.aliyuncs.com/compatible-mode/v1  # 不配置则默认会使用新加坡站点
+# 阿里云 LLM DashScope 配置（必填）/ DashScope Config (Required)
+# 秘钥管理： https://bailian.console.aliyun.com/
+DASHSCOPE_API_KEY=your-api-key
+DASHSCOPE_API_BASE=https://dashscope.aliyuncs.com/compatible-mode/v1
 DASHSCOPE_MODEL=qwen-max
 
-# Milvus 配置
+# Milvus 配置 / Milvus Config
 MILVUS_HOST=localhost
 MILVUS_PORT=19530
 
-# RAG 配置
+# RAG 配置 / RAG Config
 RAG_TOP_K=3
 CHUNK_MAX_SIZE=800
 CHUNK_OVERLAP=100
 ```
 
-## 🎯 AIOps 智能运维
+| 变量 | 必填 | 默认值 | 说明 |
+|------|:--:|--------|------|
+| `DASHSCOPE_API_KEY` | ✅ | — | 阿里云 DashScope API 密钥 / API Key |
+| `DASHSCOPE_API_BASE` | — | 新加坡站点 | API 端点地址 / Endpoint URL |
+| `DASHSCOPE_MODEL` | — | `qwen-max` | 使用的模型 / Model name |
+| `MILVUS_HOST` | — | `localhost` | Milvus 主机地址 |
+| `MILVUS_PORT` | — | `19530` | Milvus 端口号 |
+| `RAG_TOP_K` | — | `3` | 检索返回条数 / Top-K results |
+| `CHUNK_MAX_SIZE` | — | `800` | 文档分块最大长度 |
+| `CHUNK_OVERLAP` | — | `100` | 分块重叠长度 |
+
+---
+
+## 🎯 AIOps 智能运维 / AIOps Intelligent Operations
 
 基于 **Plan-Execute-Replan** 模式实现自动故障诊断。
 
-### 核心特性
-- ✅ 自动制定诊断计划（Planner）
-- ✅ 智能工具调用（Executor）
-- ✅ 动态调整步骤（Replanner）
-- ✅ 流式输出诊断过程
-- ✅ 生成结构化报告
+> *Automated fault diagnosis powered by the Plan-Execute-Replan agent pattern.*
 
-### 快速测试
+### 诊断流程 / Diagnostic Flow
+
+```
+┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+│  Planner │───▶│ Executor │───▶│Replanner │───▶│  Report  │
+│  制定计划 │    │  执行步骤 │    │  评估结果 │    │  诊断报告 │
+└──────────┘    └──────────┘    └──────────┘    └──────────┘
+      │                              │
+      └──────── 调整/重新规划 ◀───────┘
+```
+
+> 1. **Planner** 制定计划 → 生成 4-6 个诊断步骤
+> 2. **Executor** 执行步骤 → 调用 MCP 工具（日志查询、监控数据）
+> 3. **Replanner** 评估结果 → 决定继续/调整/生成报告
+> 4. **输出诊断报告** → 根因分析 + 运维建议
+
+### 核心特性 / Highlights
+
+- ✅ 自动制定诊断计划 / Auto plan generation
+- ✅ 智能工具调用 / Intelligent tool orchestration
+- ✅ 动态调整步骤 / Dynamic re-planning
+- ✅ 流式输出诊断过程 / Streaming progress
+- ✅ 生成结构化报告 / Structured reports
+
+### 快速测试 / Quick Test
 
 ```bash
-# 服务已通过 make init 自动启动
-# 如需重启服务：make restart
-
 # 访问 Web 界面，点击"智能运维与诊断工具"
-# 或使用 API
+# 或使用 API / Or via API:
 curl -X POST "http://localhost:9900/api/aiops" \
   -H "Content-Type: application/json" \
   -d '{"session_id":"test"}' \
   --no-buffer
 ```
 
-### 诊断流程
-```
-1. Planner 制定计划 → 生成 4-6 个诊断步骤
-2. Executor 执行步骤 → 调用 MCP 工具（日志查询、监控数据）
-3. Replanner 评估结果 → 决定继续/调整/生成报告
-4. 输出诊断报告 → 根因分析 + 运维建议
-```
+---
 
-## 📝 开发指南
+## 📝 开发指南 / Development Guide
 
-### 常用命令
+### 常用命令 / Common Commands
 
 ```bash
-# 项目管理
+# 项目管理 / Project
 make init              # 一键初始化（Docker + 服务 + 文档）
-make start             # 启动所有服务
-make stop              # 停止所有服务
-make restart           # 重启所有服务
+make start             # 启动所有服务 / Start all services
+make stop              # 停止所有服务 / Stop all services
+make restart           # 重启所有服务 / Restart all services
 
-# 依赖管理
-make install-dev       # 安装开发依赖
-make sync              # 同步依赖
+# 依赖管理 / Dependencies
+make install-dev       # 安装开发依赖 / Install dev deps
+make sync              # 同步依赖 / Sync dependencies
 
-# Docker 管理
-make up                # 启动 Docker 容器
-make down              # 停止 Docker 容器
+# Docker 管理 / Docker
+make up                # 启动 Docker 容器 / Start containers
+make down              # 停止 Docker 容器 / Stop containers
 
-# 代码质量
-make format            # 格式化代码
-make lint              # 代码检查
+# 代码质量 / Code Quality
+make format            # 格式化代码 / Format code
+make lint              # 代码检查 / Lint
 ```
 
+---
 
-## 🐛 常见问题
+## 🐛 常见问题 / FAQ
 
-### Windows 环境问题
+<details>
+<summary><strong>🪟 Windows：<code>make</code> 命令不可用</strong></summary>
 
-#### 1. `make` 命令不可用
 Windows 不支持 `make` 命令，请使用提供的批处理脚本：
-```powershell
-# 启动服务
-.\start-windows.bat
 
-# 停止服务
-.\stop-windows.bat
+```powershell
+.\start-windows.bat   # 启动服务
+.\stop-windows.bat    # 停止服务
 ```
 
-#### 2. PowerShell 执行策略限制
+</details>
+
+<details>
+<summary><strong>🪟 Windows：PowerShell 执行策略限制</strong></summary>
+
 如果遇到 "无法加载文件，因为在此系统上禁止运行脚本" 错误：
+
 ```powershell
 # 临时允许脚本执行（管理员权限）
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -338,7 +406,11 @@ cmd
 .\start-windows.bat
 ```
 
-#### 3. 端口被占用（Windows）
+</details>
+
+<details>
+<summary><strong>🪟 Windows：端口被占用</strong></summary>
+
 ```powershell
 # 查看占用端口的进程
 netstat -ano | findstr :9900
@@ -347,70 +419,91 @@ netstat -ano | findstr :9900
 taskkill /F /PID <PID>
 ```
 
-### 通用问题
+</details>
 
-### API Key 错误
+<details>
+<summary><strong>🔑 API Key 错误 / API Key Error</strong></summary>
+
 ```bash
-# 检查环境变量
-cat .env | grep DASHSCOPE_API_KEY    # Linux/macOS
-type .env | findstr DASHSCOPE_API_KEY  # Windows
+# 检查环境变量 / Check env
+cat .env | grep DASHSCOPE_API_KEY      # Linux/macOS
+type .env | findstr DASHSCOPE_API_KEY   # Windows
 ```
 
-### Milvus 连接失败
-```bash
-# 确保本机有 Docker 服务并且已经启动（可以使用 Docker Desktop）
+</details>
 
-# 检查 Milvus 状态
+<details>
+<summary><strong>🗄️ Milvus 连接失败 / Milvus Connection Failure</strong></summary>
+
+```bash
+# 确保本机有 Docker 服务并且已经启动
+# Ensure Docker is installed and running
+
+# 检查 Milvus 状态 / Check status
 docker ps | grep milvus
 
-# 重启 Milvus（使用 docker compose）
+# 重启 Milvus / Restart Milvus
 docker compose -f vector-database.yml restart
-
-# 或者重启单个服务
+# 或重启单个服务
 docker compose -f vector-database.yml restart standalone
 ```
 
-### 服务无法启动
+</details>
 
-**Linux/macOS:**
+<details>
+<summary><strong>🔍 服务无法启动 / Service Won't Start</strong></summary>
+
+**Linux/macOS：**
 ```bash
-# 查看服务日志
-tail -f logs/app_$(date +%Y-%m-%d).log  # FastAPI 主服务（Loguru 日志）
-tail -f mcp_cls.log                      # CLS MCP 服务
-tail -f mcp_monitor.log                  # Monitor MCP 服务
+# 查看服务日志 / View logs
+tail -f logs/app_$(date +%Y-%m-%d).log   # FastAPI 主服务
+tail -f mcp_cls.log                       # CLS MCP 服务
+tail -f mcp_monitor.log                   # Monitor MCP 服务
 
-# 检查端口占用
-lsof -i :9900  # FastAPI
-lsof -i :8003  # CLS MCP
-lsof -i :8004  # Monitor MCP
+# 检查端口占用 / Check port usage
+lsof -i :9900   # FastAPI
+lsof -i :8003   # CLS MCP
+lsof -i :8004   # Monitor MCP
 ```
 
-**Windows:**
+**Windows：**
 ```powershell
-# 查看服务日志（获取今天的日期）
+# 查看服务日志 / View logs
 $today = Get-Date -Format "yyyy-MM-dd"
-type logs\app_$today.log  # FastAPI 主服务（Loguru 日志）
-type mcp_cls.log          # CLS MCP 服务
-type mcp_monitor.log      # Monitor MCP 服务
+type logs\app_$today.log
 
-# 或者查看最新的日志文件
+# 或查看最新的日志文件
 Get-ChildItem logs\*.log | Sort-Object LastWriteTime -Descending | Select-Object -First 1 | Get-Content -Tail 50
 
-# 检查端口占用
-netstat -ano | findstr :9900  # FastAPI
-netstat -ano | findstr :8003  # CLS MCP
-netstat -ano | findstr :8004  # Monitor MCP
+# 检查端口占用 / Check port usage
+netstat -ano | findstr :9900   # FastAPI
+netstat -ano | findstr :8003   # CLS MCP
+netstat -ano | findstr :8004   # Monitor MCP
 ```
 
-## 📚 参考资源
+</details>
 
-- [FastAPI 文档](https://fastapi.tiangolo.com/)
-- [LangChain 文档](https://python.langchain.com/)
-- [LangGraph Plan-Execute](https://langchain-ai.github.io/langgraph/tutorials/plan-and-execute/)
-- [阿里云 DashScope](https://dashscope.aliyun.com/)
-- [MCP 协议](https://modelcontextprotocol.io/)
+---
 
-## 📄 许可证
-author： chief
+## 📚 参考资源 / References
 
-MIT License
+| 资源 | 链接 |
+|------|------|
+| FastAPI | https://fastapi.tiangolo.com/ |
+| LangChain | https://python.langchain.com/ |
+| LangGraph Plan-Execute | https://langchain-ai.github.io/langgraph/tutorials/plan-and-execute/ |
+| 阿里云 DashScope | https://dashscope.aliyun.com/ |
+| MCP 协议 | https://modelcontextprotocol.io/ |
+
+---
+
+## 📄 许可证 / License
+
+<p align="center">
+  <strong>Author：chief</strong><br>
+  MIT License
+</p>
+
+<p align="center">
+  <sub>Made with ❤️ for smarter operations</sub>
+</p>
